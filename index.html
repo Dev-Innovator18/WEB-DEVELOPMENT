@@ -1,164 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body class="bg-secondary">
-    <header class="p-3 bg-dark text-light sticky-top">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <h1>My Blog</h1>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nostra</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <nav class="navbar">
+            <h1>Nastra</h1>
+
+            <div class="navbar-links">
+                <p class="navbar-link">
+                    <a href="index.html">Home</a>
+                </p>
+                <p class="navbar-link">
+                    <a href="collection.html">Collections</a>
+                </p>
+                <p class="navbar-link">
+                    <a href="contact.html">Contact</a>
+                </p>
             </div>
-            <div class="col-12 col-md-6 mt-3 d-flex justify-content-start justify-content-md-end">
-                <nav>
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a class="text-light text-decoration-none" href="#">Home</a></li>
-                        <li class="list-inline-item"><a class="text-light text-decoration-none" href="#">About</a></li>
-                        <li class="list-inline-item"><a class="text-light text-decoration-none" href="#">Contact</a></li>
-                    </ul>
-                </nav>
+
+            <div class="navbar-menu-toggle" onclick="showNavbar()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+        
+        <div class="side-navbar">
+            <p style="text-align: right;" onclick="closeNavbar()">
+                <i class="fa-solid fa-xmark"></i>
+            </p>
+
+            <div class="side-navbar-links">
+                <p class="side-navbar-link">
+                    <a href="index.html">Home</a>
+                </p>
+                <p class="side-navbar-link">
+                    <a href="collection.html">Collections</a>
+                </p>
+                <p class="side-navbar-link">
+                    <a href="contact.html">Contact</a>
+                </p>
             </div>
         </div>
-    </header>
-    <div class="container p-3">
-        <div class="card bg-info text-white">
-            <div class="card-body">
-                <p class="h1 card-title">Simple Bolg With bootstrap 5</p>
-                <p class="card-text">Here you can view recently uploaded posts</p>
+
+        <div class="header">
+            <div>
+                <h1>Level Up Your Style</h1>
+                <p>with our stunning collections</p>
+                <button class="header-button">Shop Now</button>
+            </div>
+
+            <div>
+                <img src="images/shoes_1.png" alt="Fashionable" class="header-image" style="width:300px;">
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                <div class="card">
-                    <div class="row">
-                        <div class="col-6 col-sm-12">
-                            <img alt="Pic" class="img-fluid rounded h-100 w-100" src="https://picsum.photos/300/200">
-                        </div>
-                        <div class="col-6 col-sm-12">
-                            <div class="card-body">
-                                <h2 class="mb-3">Post Title - 1</h2>
-                                <p>Date: July 17, 2024</p>
-                                <p>This is the content of the post tile 1</p>
-                            </div>
-                        </div>
-                    </div>
+
+        <div class="service">
+            <div class="service-container-1">
+                <div>
+                    <h2>We provide best</h2>
+                    <h2>customer experience</h2>
+                </div>
+                <div>
+                    <p>|| we make sure that our customers have the best shopping experience</p>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                <div class="card">
-                    <div class="row">
-                        <div class="col-6 col-sm-12">
-                            <img alt="Pic" class="img-fluid rounded" src="https://picsum.photos/300/200">
-                        </div>
-                        <div class="col-6 col-sm-12">
-                            <div class="card-body">
-                                <h2 class="mb-3">Post Title - 2</h2>
-                                <p>Date: July 18, 2024</p>
-                                <p>This is the content of the post tile 2</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="service-container-2">
+                <div>
+                    <i class="fa-regular fa-face-smile"></i>
+                    <h4>Satisfaction gaurantee</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur unde dicta quas similique deleniti minima eligendi laudantium.</p>
                 </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                <div class="card">
-                    <div class="col-6 col-sm-12">
-                        <img alt="Pic" class="img-fluid rounded" src="https://picsum.photos/300/200">
-                    </div>
-                    <div class="col-6 col-sm-12">
-                        <div class="card-body">
-                            <h2 class="mb-3">Post Title - 3</h2>
-                            <p>Date: July 19, 2024</p>
-                            <p>This is the content of the post tile 3</p>
-                        </div>
-                    </div>
+                <div>
+                    <i class="fa-regular fa-face-smile"></i>
+                    <h4>New arrival everyday</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur unde dicta quas similique deleniti minima eligendi laudantium.</p>
                 </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                <div class="card">
-                    <div class="col-6 col-sm-12">
-                        <img alt="Pic" class="img-fluid rounded" src="https://picsum.photos/300/200">
-                    </div>
-                    <div class="col-6 col-sm-12">
-                        <div class="card-body">
-                            <h2 class="mb-3">Post Title - 4</h2>
-                            <p>Date: July 17, 2024</p>
-                            <p>This is the content of the post tile 4</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                <div class="card">
-                    <div class="col-6 col-sm-12">
-                        <img alt="Pic" class="img-fluid rounded" src="https://picsum.photos/300/200">
-                    </div>
-                    <div class="col-6 col-sm-12">
-                        <div class="card-body">
-                            <h2 class="mb-3">Post Title - 5</h2>
-                            <p>Date: July 18, 2024</p>
-                            <p>This is the content of the post tile 5</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-3">
-                <div class="card">
-                    <div class="col-6 col-sm-12">
-                        <img alt="Pic" class="img-fluid rounded" src="https://picsum.photos/300/200">
-                    </div>
-                    <div class="col-6 col-sm-12">
-                        <div class="card-body">
-                            <h2 class="mb-3">Post Title - 5</h2>
-                            <p>Date: July 18, 2024</p>
-                            <p>This is the content of the post tile 5</p>
-                        </div>
-                    </div>
+                <div>
+                    <i class="fa-regular fa-face-smile"></i>
+                    <h4>Fast & Free shipping</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur unde dicta quas similique deleniti minima eligendi laudantium.</p>
                 </div>
             </div>
         </div>
-        <div class="card col-12 col-lg-6 my-3">
-            <div class="card-body">
-                <div class="row">
-                    <h2>Contact Us</h2>
-                    <div class="col">
-                        <form action="/" method="POST">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input placeholder="Name" name="Name" class="form-control" type="text">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Id</label>
-                                <input placeholder="Email Id" email="Email" class="form-control" type="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="msg">Message</label>
-                                <textarea placeholder="Message" msg="Message" class="form-control"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-info my-2 text-white">Submit</button>
-                        </form>
-                    </div>
+
+        <div>
+            <h2 style="padding:20px;">New Arrival</h2>
+            <div class="new-arrival">
+                <div class="new-arrival-container">
+                    <img src="images/shoes_2.png" alt=""  style="width:300px;">
+                    <button>Shop Now<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div class="new-arrival-container">
+                    <img src="images/shoes_3.png" alt=""  style="height:200px;">
+                    <button>Shop Now<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div class="new-arrival-container">
+                    <img src="images/shoes_4.png" alt=""  style="height:200px;">
+                    <button>Shop Now<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div class="new-arrival-container">
+                    <img src="images/shoes_1.png" alt=""  style="width:300px;">
+                    <button>Shop Now<i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
         </div>
-    </div>
-    <footer class="p-3 bg-dark text-light">
-        <div class="row">
-            <div class="col">
-                <p>2024 My Blogs. All Rights Reserved</p>
-            </div>
-            <div class="col">
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a class="text-light text-decoration-none" href="#">Terms of Services</a></li>
-                    <li class="list-inline-item"><a class="text-light text-decoration-none" href="#">Privacy Policy</a></li>
-                    <li class="list-inline-item"><a class="text-light text-decoration-none" href="#">Sitemap</a></li>
-                </ul>
+        <div>
+            <h2 style="padding:20px;">Most Wanted</h2>
+            <div class="new-arrival">
+                <div class="new-arrival-container">
+                    <img src="images/shoes_2.png" alt=""  style="width:300px;">
+                    <button>Shop Now<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div class="new-arrival-container">
+                    <img src="images/shoes_3.png" alt=""  style="height:200px;">
+                    <button>Shop Now<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div class="new-arrival-container">
+                    <img src="images/shoes_4.png" alt=""  style="height:200px;">
+                    <button>Shop Now<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div class="new-arrival-container">
+                    <img src="images/shoes_1.png" alt=""  style="width:300px;">
+                    <button>Shop Now<i class="fa-solid fa-arrow-right"></i></button>
+                </div>
             </div>
         </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+
+        <div class="news">
+            <h2>Join our News Letter</h2>
+            <p>Signup for our email news letter to get exclusive discounts and updates and more</p>
+            <div>
+                <input type="text" class="search">
+            </div>
+            <div>
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-container">
+                <div class="footer-box-1">
+                    <h2 class="headingText">Nostra</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem eaque quaerat accusamus est.</p>
+                    <div class="footer-icon-container">
+                        <i class="fa-brands fa-instagram" style="color:#ffffff"></i>
+                        <i class="fa-brands fa-twitter" style="color:#ffffff"></i>
+                        <i class="fa-brands fa-facebook" style="color:#ffffff"></i>
+                    </div>
+                </div>
+            </div>
+            <p>@2024 Nostra.com</p>
+        </div>
+    </body>
+
+    <script src="responsive.js"></script>
+</html> 
