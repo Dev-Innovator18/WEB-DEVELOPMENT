@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hari AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            position: relative;
+            overflow: hidden;
+        }
+        .chat-container {
+            width: 400px;
+            max-width: 90%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chat-header {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: 500px;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background: #007bff;
+            color: white;
+            margin-left: auto;
+        }
+        .bot-message {
+            background: #e9ecef;
+            color: black;
+            margin-right: auto;
+        }
+        .chat-footer {
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 10px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        /* Emoji animation styles */
+        @keyframes poopFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        .poop-emoji {
+            position: absolute;
+            font-size: 30px;
+            pointer-events: none;
+            animation: poopFall 3s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">Hari AI Chatbot</div>
+        <div class="chat-body" id="chatBody"></div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBody = document.getElementById('chatBody');
+        const userInput = document.getElementById('userInput');
+
+        function addMessage(text, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            messageDiv.textContent = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            userInput.value = '';
+
+            // Show typing indicator
+            addMessage('Typing...', false);
+
+            try {
+                // WARNING: Exposing API keys client-side is insecure for production.
+                // For production, use a backend server to handle API requests.
+                const apiKey = 'AIzaSyDCDlLfPKKW7v8t-re5YntMo6LLu6NaaAs';
+                const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(geminiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: `You are Hari AI, a helpful and accurate chatbot powered by Google's Gemini 2.0 Flash. Provide precise and concise answers. User query: ${message}`
+                            }]
+                        }],
+                        generationConfig: {
+                            temperature: 0.7,
+                            maxOutputTokens: 150
+                        }
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.error?.message || 'Unknown error'}`);
+                }
+
+                const data = await response.json();
+                // Remove typing indicator
+                chatBody.lastChild.remove();
+
+                // Add Gemini response
+                const botResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I didn’t understand that. Please try again.';
+                addMessage(botResponse, false);
+
+                // Trigger emoji effect
+                triggerPoopEmojiEffect();
+            } catch (error) {
+                console.error('Error:', error.message);
+                chatBody.lastChild.remove();
+                addMessage('Sorry, something went wrong! Please check the API key or try again.', false);
+                // Trigger emoji effect even on error for consistency
+                triggerPoopEmojiEffect();
+            }
+        }
+
+        function triggerPoopEmojiEffect() {
+            // Create multiple emojis
+            for (let i = 0; i < 20; i++) {
+                const emoji = document.createElement('span');
+                emoji.textContent = '💩';
+                emoji.className = 'poop-emoji';
+               
+                // Random positioning
+                const left = Math.random() * window.innerWidth;
+                const delay = Math.random() * 2;
+
+                emoji.style.left = `${left}px`;
+                emoji.style.animationDelay = `${delay}s`;
+
+                document.body.appendChild(emoji);
+
+                // Remove emoji after animation
+                setTimeout(() => {
+                    emoji.remove();
+                }, 3000 + delay * 1000);
+            }
+        }
+
+        // Allow sending message with Enter key
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // Initial bot greeting
+        addMessage('Hello! I’m Hari AI, powered by Google’s Gemini 2.0 Flash. Type a message to see the poop emoji effect!', false);
+    </script>
+</body>
+</html>
